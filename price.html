@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>가격표 - 천둥 롤대리</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    body { margin:0; font-family:'Noto Sans KR', sans-serif; background:#000; color:#fff; }
+    header { background:#111; padding:20px; text-align:center; }
+    header h1 { margin:0; cursor:pointer; }
+    nav a { color:#ddd; margin:0 12px; text-decoration:none; }
+    nav a:hover { color:#ffcc00; }
+    main { padding: 30px 20px; }
+    .price-card {
+      background: linear-gradient(135deg, #ffcc00, #ff8800);
+      padding:20px;
+      border-radius:12px;
+      margin:20px 0;
+      color:#000;
+      position:relative;
+      clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
+    }
+    .price-card h3 { margin:0 0 10px; }
+    .price-card p { margin:0; font-weight:bold; }
+    footer { background:#111; padding:20px; text-align:center; color:#ccc; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 onclick="location.href='index.html'">천둥 롤대리</h1>
+    <nav>
+      <a href="service.html">서비스</a>
+      <a href="price.html">가격표</a>
+      <a href="reviews.html">후기</a>
+      <a href="https://open.kakao.com/o/slMcbCLh" target="_blank">상담하기</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="price-card">
+      <h3>아이언 → 브론즈</h3>
+      <p>10,000원</p>
+    </div>
+    <div class="price-card">
+      <h3>브론즈 → 실버</h3>
+      <p>15,000원</p>
+    </div>
+    <div class="price-card">
+      <h3>실버 → 골드</h3>
+      <p>20,000원</p>
+    </div>
+    <div class="price-card">
+      <h3>골드 → 플래티넘</h3>
+      <p>25,000원</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 천둥 롤대리
+  </footer>
+</body>
+</html>
