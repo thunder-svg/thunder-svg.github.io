@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-site-verification" content="7FAZKhRMO0Ghn_we9uf8qqNHyDG9diIXzeMoIgdUd9w" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>천둥 코칭 – 게임 코칭/교육 랜딩</title>
+  <meta name="description" content="맞춤형 실전 코칭으로 실력 향상을 돕는 천둥 코칭. 1:1 강의, 듀오/배치 강의, 롤토체스 전략까지." />
+
+  <!-- Google Search Console (소유권 확인) -->
+  <meta name="google-site-verification" content="여기에_검증_토큰_붙여넣기" />
+
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#0f182b; --card:#111b30; --stroke:#213354;
+      --text:#e8eef6; --muted:#a8b4c6; --accent:#ffd84d; --shadow:0 10px 30px rgba(0,0,0,.45);
+      --radius:16px; --maxw:1120px;
+    }
+    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Pretendard,'Noto Sans KR',sans-serif;line-height:1.45}
+    a{color:inherit;text-decoration:none} a:focus{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+
+    /* Top nav */
+    nav.top{position:sticky;top:0;backdrop-filter:saturate(140%) blur(8px);
+      background:rgba(11,18,32,.6);border-bottom:1px solid #1b2a48;z-index:10}
+    .top .inner{max-width:var(--maxw);margin:0 auto;padding:10px 18px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .logo a{font-weight:900;letter-spacing:.02em}
+    .nav a{margin-left:14px;color:#cfe0ff} .nav a:hover{color:#fff}
+
+    /* Hero */
+    header.site{position:relative;overflow:hidden;background:
+      radial-gradient(120% 100% at 50% 0%, #101a30 0%, #0b1220 60%),
+      linear-gradient(180deg, rgba(24,39,73,.9), rgba(11,18,32,.9)), #0b1220}
+    header.site::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(60% 60% at 50% 0%, rgba(88,130,255,.15) 0%, transparent 60%),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%23bfe1ff"/><stop offset="1" stop-color="%23a6c8ff" stop-opacity=".0"/></linearGradient></defs><g opacity=".55"><path d="M650 10 L610 210 L720 210 L620 430 L660 260 L560 260 Z" fill="url(%23g)"/></g><g opacity=".35"><path d="M420 40 L390 190 L470 190 L410 340 L440 230 L360 230 Z" fill="url(%23g)"/></g></svg>') center top/cover no-repeat;
+      mix-blend:screen;pointer-events:none}
+    .hero{padding:72px 0 40px;text-align:center;position:relative}
+    .brand{font-size:14px;color:#c9d5ea;letter-spacing:.06em}
+    .hero h1{margin:12px 0 8px;font-size:40px;font-weight:800;letter-spacing:.02em}
+    .hero p.sub{margin:0 auto 26px;max-width:680px;color:var(--muted)}
+    .cta{display:inline-block;background:var(--accent);color:#111;padding:14px 26px;border-radius:999px;font-weight:800;box-shadow:var(--shadow)}
+    .cta:hover{filter:brightness(.96)} .under{margin-top:10px;font-size:13px;color:#cfd8e6;opacity:.9}
+
+    /* Sections */
+    .section{padding:44px 0} .sec-title{font-size:26px;font-weight:900;margin:0 0 18px}
+    .grid{display:grid;gap:16px} .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:18px;box-shadow:var(--shadow);transition:transform .15s ease, border-color .15s ease}
+    .card:hover{transform:translateY(-2px);border-color:#34538a}
+    .card-link{display:block} .icon{width:42px;height:42px;border-radius:12px;display:inline-grid;place-items:center;
+      background:linear-gradient(180deg,#1a2a4b,#0e1a2f);border:1px solid #2b3f66;margin-bottom:10px}
+    .icon svg{width:24px;height:24px;fill:#d6e2ff} .card h3{margin:4px 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,#243a63,transparent);margin-top:18px}
+    .btn-row{display:flex;flex-wrap:wrap;gap:10px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#1b2744;border:1px solid #2d3e66;color:#cfe0ff}
+    .btn:hover{background:#223258}
+
+    /* Reviews */
+    .review-card{display:flex;flex-direction:column;gap:10px}
+    .stars{color:var(--accent)} .meta{color:#9db2c7;font-size:12px}
+    .review-card p{color:#d7e3f1}
+
+    footer{padding:40px 0 60px;color:#9db2c7;text-align:center}
+
+    @media (max-width:1024px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){
+      .hero{padding:60px 0 34px} .hero h1{font-size:30px}
+      .grid-3,.grid-4{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- 상단 네비게이션 -->
+  <nav class="top" aria-label="주요 메뉴">
+    <div class="inner">
+      <div class="logo"><a href="/" aria-label="홈으로">천둥 코칭</a></div>
+      <div class="nav" role="navigation">
+        <a href="#service">서비스</a>
+        <a href="#features">강의특징</a>
+        <a href="#reviews">후기</a>
+        <a href="price.html">가격표</a>
+        <a href="blog.html">블로그</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 히어로 -->
+  <header class="site">
+    <div class="container hero">
+      <div class="brand">프로 강사진의 수순별 맞춤 코칭</div>
+      <h1>번개처럼 빠른 실력상승, <span style="color:var(--accent)">천둥 코칭</span></h1>
+      <p class="sub">실시간 1:1 피드백과 리플레이 분석으로 플레이를 “결과가 나는 루틴”으로 바꿉니다. 라인/정글/서폿/원딜, 롤토체스까지 커리큘럼 제공.</p>
+      <a class="cta" href="https://open.kakao.com/o/slMcbCLh" target="_blank" rel="noopener" aria-label="카카오톡 상담 열기">카톡 상담하기</a>
+      <div class="under">24시간 상담 · 맞춤 커리큘럼</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 서비스 안내 (각 카드가 1~4.html로 링크) -->
+    <section class="section container" id="service">
+      <h2 class="sec-title">서비스 안내</h2>
+      <div class="grid grid-4">
+        <a class="card card-link" href="1.html" aria-label="1:1 강의 상세로 이동">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12.5 7.5 15 10l3-3 2 2-4 4-2-2-3 3-2-2 3-3-1.5-1.5 1-1 1 1zM6 11l2 2-3 3-2-2 3-3zM19 14l-3 3-2-2 3-3 2 2z"/></svg></div>
+          <h3>1:1 강의</h3><p>실시간 교정과 과제 기반 코칭</p>
+        </a>
+        <a class="card card-link" href="2.html" aria-label="계정 성장 상세로 이동">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 20h2V10H4v10zm7 0h-2V6h2v14zm3 0h2V3h-2v17zm6 0H2v2h18v-2z"/></svg></div>
+          <h3>계정 성장</h3><p>티어 확장, 루틴 설계, 체계적 점검</p>
+        </a>
+        <a class="card card-link" href="3.html" aria-label="배치 강의 상세로 이동">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7-11-7z"/></svg></div>
+          <h3>배치 강의</h3><p>배치 집중 코칭으로 출발선 최적화</p>
+        </a>
+        <a class="card card-link" href="4.html" aria-label="롤토체스 상세로 이동">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M16 11a3 3 0 100-6 3 3 0 000 6zM6 12a3 3 0 100-6 3 3 0 000 6zm10 2c-2.33 0-7 1.17-7 3.5V20h14v-2.5C23 14.17 18.33 13 16 13zM6 14c-2.21 0-6 1.12-6 3v3h8v-3c0-1.88-3.79-3-6-3z"/></svg></div>
+          <h3>롤토체스</h3><p>패치별 메타 전략, 운영 루틴</p>
+        </a>
+      </div>
+      <div class="divider"></div>
+    </section>
+
+    <!-- 강의 특징 -->
+    <section class="section container" id="features">
+      <h2 class="sec-title">강의 특징</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 00-2 2v14l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2z"/></svg></div>
+          <h3>1:1 피드백</h3><p>실시간 교정 + 과제 설계</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 5v4l4-4-4-4v4zM6 7h8a5 5 0 110 10H6"/></svg></div>
+          <h3>리플레이 분석</h3><p>반복 실수 추출 · 바로잡기</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v2a8 8 0 018 8h2c0-5.52-4.48-10-10-10zM12 6v2a4 4 0 014 4h2a6 6 0 00-6-6zM7 12a5 5 0 105 5v-2a3 3 0 11-3-3H7z"/></svg></div>
+          <h3>맞춤 전략</h3><p>라인/포지션별 루틴 제공</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+    </section>
+
+    <!-- 수강 후기 -->
+    <section class="section container" id="reviews">
+      <h2 class="sec-title">수강 후기</h2>
+      <div class="grid grid-3">
+        <article class="card review-card">
+          <div class="stars">★★★★★</div>
+          <p>라인전 루틴만 바꿨는데 확실히 덜 흔들려요. 체크리스트가 큰 도움 됐습니다.</p>
+          <div class="meta">Mirisu · 2024-12-10</div>
+        </article>
+        <article class="card review-card">
+          <div class="stars">★★★★★</div>
+          <p>정글 동선 템플릿이 체감 미쳤네요. 갱 타이밍이 일정해졌습니다.</p>
+          <div class="meta">Jiwon · 2025-01-22</div>
+        </article>
+        <article class="card review-card">
+          <div class="stars">★★★★★</div>
+          <p>리플 분석으로 반복 실수 줄이니 승률이 확 올라갑니다. 추천!</p>
+          <div class="meta">Sghen · 2025-03-07</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 상세 페이지 바로가기 (1~6.html 모두 노출) -->
+    <section class="section container" aria-label="상세 페이지 바로가기">
+      <div class="btn-row">
+        <a class="btn" href="1.html">1.html</a>
+        <a class="btn" href="2.html">2.html</a>
+        <a class="btn" href="3.html">3.html</a>
+        <a class="btn" href="4.html">4.html</a>
+        <a class="btn" href="5.html">5.html</a>
+        <a class="btn" href="6.html">6.html</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 천둥 코칭 · 문의: <a href="https://open.kakao.com/o/slMcbCLh" target="_blank" rel="noopener">카카오톡 상담</a>
+  </footer>
+</body>
+</html>
