@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 홈 -->
+  <url>
+    <loc>https://thunder-svg.github.io/</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 핵심 랜딩 -->
+  <url>
+    <loc>https://thunder-svg.github.io/ads-landing.html</loc>
+    <lastmod>2025-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 서비스 1~6 -->
+  <url><loc>https://thunder-svg.github.io/1.html</loc><lastmod>2025-08-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thunder-svg.github.io/2.html</loc><lastmod>2025-08-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thunder-svg.github.io/3.html</loc><lastmod>2025-08-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thunder-svg.github.io/4.html</loc><lastmod>2025-08-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thunder-svg.github.io/5.html</loc><lastmod>2025-08-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thunder-svg.github.io/6.html</loc><lastmod>2025-08-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <!-- 콘텐츠/신뢰 신호 -->
+  <url><loc>https://thunder-svg.github.io/blog.html</loc><lastmod>2025-08-13</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thunder-svg.github.io/reviews.html</loc><lastmod>2025-08-13</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- 정책 페이지 -->
+  <url><loc>https://thunder-svg.github.io/terms.html</loc><lastmod>2025-08-13</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://thunder-svg.github.io/privacy.html</loc><lastmod>2025-08-13</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://thunder-svg.github.io/refund.html</loc><lastmod>2025-08-13</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+</urlset>
