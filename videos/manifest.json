@@ -1,8 +1,12 @@
-[
-  {
-    "file": "videos/intro-toplane.mp4",
-    "title": "정글 강사님",
-    "desc": "교전능력",
-    "poster": "videos/intro-toplane.jpg",
-    "size": "142MB"
-  }
+{
+  "videos": [
+    {
+      "title": "정글 강사 교전 능력",
+      "file": "videos/13-24_KR-6866302.mp4",
+      "poster": "videos/13-24_KR-6866302.jpg",
+      "duration": 95,
+      "tags": ["한타","정글"],
+      "date": "2025-08-14"
+    }
+  ]
+}
