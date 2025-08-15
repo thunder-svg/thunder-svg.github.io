@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>영상 보관함 – 천둥 코칭</title>
+<meta name="description" content="서버 없이 GitHub Pages에서 제공하는 천둥 코칭 영상 보관함. manifest.json을 읽어 자동으로 목록을 구성합니다." />
+<link rel="canonical" href="https://thunder-svg.github.io/viewport.html" />
+<meta name="robots" content="index,follow" />
+
+<style>
+:root{
+  --bg:#0b1220; --panel:#0f182b; --card:#111b30; --stroke:#213354;
+  --text:#e8eef6; --muted:#a8b4c6; --accent:#ffd84d; --shadow:0 10px 30px rgba(0,0,0,.45);
+  --radius:16px; --maxw:1120px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Pretendard,'Noto Sans KR',sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+a:focus,button:focus{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+
+/* Top nav (사이트 공통) */
+nav.top{position:sticky;top:0;backdrop-filter:saturate(140%) blur(8px);
+  background:rgba(11,18,32,.7);border-bottom:1px solid #1b2a48;z-index:10}
+.top .inner{max-width:var(--maxw);margin:0 auto;padding:10px 18px;
+  display:flex;gap:10px;align-items:center;justify-content:space-between}
+.logo a{font-weight:900;letter-spacing:.02em}
+.nav a{margin-left:14px;color:#cfe0ff}
+.nav a:hover{color:#fff}
+
+/* Hero */
+header.site{position:relative;overflow:hidden;background:
+  radial-gradient(120% 100% at 50% 0%, #101a30 0%, #0b1220 60%),
+  linear-gradient(180deg, rgba(24,39,73,.9), rgba(11,18,32,.9)), #0b1220}
+.hero{padding:56px 0 30px;text-align:center}
+.hero h1{margin:8px 0 6px;font-size:32px;font-weight:900;letter-spacing:.02em}
+.hero p{margin:0 auto;max-width:760px;color:var(--muted)}
+.badge{display:inline-block;margin-left:8px;padding:4px 10px;border-radius:999px;background:#1b2744;border:1px solid #2d3e66;color:#cfe0ff;font-size:12px}
+
+/* Grid */
+.section{padding:34px 0}
+.grid{display:grid;gap:16px}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid-3{grid-template-columns:1fr}}
+
+/* Card */
+.card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.thumb{position:relative;width:100%;aspect-ratio:16/9;background:#0f1a30;border:1px solid #20324e;border-radius:12px;overflow:hidden;display:grid;place-items:center;cursor:pointer}
+.thumb img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.play{position:absolute;inset:auto auto 10px 10px;background:#1b2744;border:1px solid #2d3e66;border-radius:999px;padding:6px 10px;font-size:12px;color:#cfe0ff}
+.title{font-weight:800;margin:10px 4px 2px}
+.meta{font-size:12px;color:var(--muted);margin:0 4px 8px}
+
+/* Pager */
+.pager{display:flex;gap:8px;justify-content:center;margin-top:18px}
+.btn{display:inline-block;padding:10px 16px;border-radius:999px;background:#1b2744;border:1px solid #2d3e66;color:#cfe0ff;cursor:pointer}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn:hover{background:#223258}
+
+/* Modal player */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+.modal.open{display:flex}
+.player{width:min(1000px,96vw);background:#0f182b;border:1px solid #20324e;border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.player header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #20324e}
+.player header .h{font-weight:800}
+.player header button{background:#1b2744;border:1px solid #2d3e66;border-radius:999px;color:#cfe0ff;padding:8px 12px;cursor:pointer}
+.player header button:hover{background:#223258}
+.player .body{padding:0}
+.player video{width:100%;height:auto;display:block;background:#000}
+.help{font-size:12px;color:#9db2c7;margin-top:6px;text-align:center}
+</style>
+</head>
+<body>
+  <!-- 상단 네비 -->
+  <nav class="top" aria-label="주요 메뉴">
+    <div class="inner">
+      <div class="logo"><a href="index.html" aria-label="홈으로">천둥 코칭</a></div>
+      <div class="nav" role="navigation">
+        <a href="index.html#service">서비스</a>
+        <a href="index.html#features">강의특징</a>
+        <a href="reviews.html">후기</a>
+        <a href="price.html">가격표</a>
+        <a href="blog.html">블로그</a>
+        <a class="btn" style="padding:8px 14px" href="https://open.kakao.com/o/slMcbCLh" target="_blank" rel="noopener">상담하기</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 히어로 -->
+  <header class="site">
+    <div class="container hero">
+      <div class="brand" style="font-size:13px;color:#c9d5ea">서버 없이 동작</div>
+      <h1>영상 보관함 <span class="badge">manifest.json 기반</span></h1>
+      <p>GitHub Pages의 <code>videos/manifest.json</code>을 읽어 목록을 구성합니다. 새 영상을 추가하려면 mp4를 <code>videos/</code> 폴더에 올리고, 매니페스트에 항목을 추가하세요.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container">
+      <div id="grid" class="grid grid-3" aria-live="polite"></div>
+      <div class="pager">
+        <button class="btn" id="prev">이전</button>
+        <span id="pageInfo" class="help" style="padding:8px 12px"></span>
+        <button class="btn" id="next">다음</button>
+      </div>
+      <p class="help">파일이 안 보이면 <code>videos/manifest.json</code> 경로와 JSON 문법을 확인하세요.</p>
+    </section>
+  </main>
+
+  <footer>© 2025 천둥 코칭</footer>
+
+  <!-- 모달 플레이어 -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="영상 재생기">
+    <div class="player">
+      <header>
+        <div class="h" id="modalTitle">영상</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <a id="downloadBtn" class="btn" download>다운로드</a>
+          <button id="closeBtn">닫기</button>
+        </div>
+      </header>
+      <div class="body">
+        <video id="player" controls playsinline></video>
+      </div>
+    </div>
+  </div>
+
+<script>
+/** ===== 설정 ===== */
+const PAGE_SIZE = 9; // 한 페이지 카드 수
+const MANIFEST_URL = 'videos/manifest.json'; // 리포 내 경로
+
+const state = {
+  items: [], page: 1
+};
+const els = {
+  grid: document.getElementById('grid'),
+  prev: document.getElementById('prev'),
+  next: document.getElementById('next'),
+  pageInfo: document.getElementById('pageInfo'),
+  modal: document.getElementById('modal'),
+  player: document.getElementById('player'),
+  modalTitle: document.getElementById('modalTitle'),
+  downloadBtn: document.getElementById('downloadBtn'),
+  closeBtn: document.getElementById('closeBtn'),
+};
+
+function paginate(arr, page, size){
+  const total = Math.ceil(arr.length / size) || 1;
+  if(page < 1) page = 1; if(page > total) page = total;
+  const start = (page - 1) * size;
+  return { slice: arr.slice(start, start + size), page, total };
+}
+
+function render(){
+  const { slice, page, total } = paginate(state.items, state.page, PAGE_SIZE);
+  els.grid.innerHTML = '';
+  els.pageInfo.textContent = `${page} / ${total} 페이지`;
+  els.prev.disabled = page <= 1;
+  els.next.disabled = page >= total;
+
+  slice.forEach(v => {
+    const card = document.createElement('article');
+    card.className = 'card';
+
+    const thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    const img = document.createElement('img');
+    img.alt = v.title || v.file;
+    img.src = v.poster || 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width=\\"640\\" height=\\"360\\"><rect width=\\"100%\\" height=\\"100%\\" fill=\\"%230f1a30\\"/><text x=\\"50%\\" y=\\"52%\\" fill=\\"%23cfe0ff\\" font-size=\\"20\\" text-anchor=\\"middle\\">VIDEO</text></svg>';
+    thumb.appendChild(img);
+
+    const play = document.createElement('div');
+    play.className = 'play'; play.textContent = '재생';
+    thumb.appendChild(play);
+
+    thumb.addEventListener('click', ()=> openModal(v));
+
+    const title = document.createElement('div');
+    title.className='title'; title.textContent = v.title || v.file;
+
+    const meta = document.createElement('div');
+    meta.className='meta';
+    const sizeTxt = v.size ? ` · ${v.size}` : '';
+    meta.textContent = (v.desc || '업로드된 영상') + sizeTxt;
+
+    card.appendChild(thumb);
+    card.appendChild(title);
+    card.appendChild(meta);
+    els.grid.appendChild(card);
+  });
+}
+
+function openModal(v){
+  els.player.src = v.url || v.file;
+  els.modalTitle.textContent = v.title || v.file;
+  els.downloadBtn.href = v.url || v.file;
+  els.downloadBtn.download = (v.title || v.file).replace(/\s+/g,'_');
+  els.modal.classList.add('open');
+  els.player.play().catch(()=>{});
+}
+function closeModal(){
+  els.player.pause(); els.player.removeAttribute('src'); els.player.load();
+  els.modal.classList.remove('open');
+}
+els.closeBtn.addEventListener('click', closeModal);
+els.modal.addEventListener('click', (e)=>{ if(e.target === els.modal) closeModal(); });
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+els.prev.addEventListener('click', ()=>{ state.page--; render(); });
+els.next.addEventListener('click', ()=>{ state.page++; render(); });
+
+async function boot(){
+  try{
+    const res = await fetch(MANIFEST_URL, {cache:'no-cache'});
+    if(!res.ok) throw new Error('manifest load error');
+    const json = await res.json();
+    // 구조: [{file:"videos/파일.mp4", title:"제목", desc:"설명", poster:"images/포스터.jpg", size:"123MB"}]
+    // URL 절대/상대 모두 허용
+    state.items = (Array.isArray(json) ? json : (json.items||[])).map(x=>({
+      ...x,
+      url: x.url || x.file // url 또는 file 필드 사용
+    }));
+  }catch(e){
+    state.items = [];
+    console.error(e);
+    els.grid.innerHTML = '<div class="card">manifest.json을 불러오지 못했습니다. 경로/문법을 확인하세요.</div>';
+  }
+  state.page = 1;
+  render();
+}
+boot();
+</script>
+</body>
+</html>
