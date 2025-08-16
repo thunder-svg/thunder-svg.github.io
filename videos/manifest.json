@@ -22,6 +22,31 @@
       "date": "2025-08-15"
     },
     {
+  "videos": [
+    {
+      "title": "디테일 알아보면 아지르 고수 !",
+      "file": "videos/1 step.mp4",
+      "duration": 1,
+      "tags": ["아지르", "1픽셀", "끝사거리 궁극기"],
+      "date": "2025-08-14"
+    },
+    {
+      "title": "미드 강사 손풀기 장면",
+      "file": "videos/Zed file.mp4",
+      "duration": 1,
+      "tags": ["피지컬 뽐내기", "미드 사이드"],
+      "date": "2025-08-15"
+    },
+    {
+      "title": "듀오 진행 중 인생 한타 갱신",
+      "file": "videos/13-24_KR-6891497514_01-1.webm",
+      "duration": 1,
+      "tags": ["게임", "역전"],
+      "date": "2025-08-15"
+    }
+  ]
+    }
+    {
       "title": "듀오 진행 중 인생 한타 갱신",
       "file": "videos/13-24_KR-6891497514_01-1.webm",
       "duration": 1,
